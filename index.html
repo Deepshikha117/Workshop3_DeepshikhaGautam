@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Movie Collection Manager</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+form {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr 1fr 120px;
+  margin-bottom: 20px;
+}
+form button {
+  background-color: #3b82f6;
+  color: white;
+}
+
+form button:hover {
+  background-color: #2563eb;
+}
+
+
+input[type="text"],
+input[type="number"],
+#search-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* EDIT button: Blue */
+.movie-actions button:first-child {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.movie-actions button:first-child:hover {
+  background-color: #2563eb;
+}
+
+/* DELETE button: Red */
+.movie-actions button:last-child {
+  background-color: #ef4444;
+  color: white;
+}
+
+.movie-actions button:last-child:hover {
+  background-color: #dc2626;
+}
+
+#movie-list {
+  display: grid;
+  gap: 10px;
+}
+
+.movie-item {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+  .movie-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <h1>Movie Collection Manager</h1>
+
+  <form id="add-movie-form" autocomplete="off">
+    <h3 style="grid-column: 1 / -1; margin:0 0 6px 0;">Add New Movie</h3>
+
+    <input type="text" id="title" placeholder="Title" required />
+    <input type="text" id="genre" placeholder="Genre" />
+    <input type="number" id="year" placeholder="Release Year" required min="1888" />
+    <button type="submit">Add Movie</button>
+  </form>
+
+  <hr />
+
+  <h2>Movie List</h2>
+  <input type="text" id="search-input" placeholder="Search movies by title or genre" />
+
+  <div id="movie-list" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
